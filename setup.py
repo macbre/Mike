@@ -34,7 +34,7 @@ setup(
         'lxml>=4.2.0',
         # UI
         'flask==1.0.2',
-        'gunicorn==19.9.0',
+        'gunicorn==20.0.4',
     ],
     entry_points={
         'console_scripts': [
