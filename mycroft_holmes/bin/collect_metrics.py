@@ -3,6 +3,7 @@ This script should be run periodically to collect metrics
 that are used to calculate scores for features.
 """
 import logging
+import sys
 from collections import OrderedDict
 
 from mycroft_holmes.app.utils import get_config
@@ -75,7 +76,7 @@ def main():
             logger.error('Failed to get metrics values', exc_info=True)
 
             print('\nWe failed to generate metrics values:\n\t%s\n' % repr(ex))
-            exit(1)
+            sys.exit(1)
 
     storage.commit()
     logger.info('Done')
