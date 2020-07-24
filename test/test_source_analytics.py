@@ -79,7 +79,7 @@ def test_source_validation():
     # arguments validation
     with raises(AssertionError) as exc_info:
         source.get_value()
-    assert str(exc_info).endswith('AssertionError: "metric" parameter needs to be provided')
+    assert '"metric" parameter needs to be provided' in str(exc_info)
 
 
 def test_mocked_source():
@@ -118,7 +118,7 @@ def test_client_credentials_validation():
     with raises(AssertionError) as exc_info:
         _ = source.client
 
-    assert str(exc_info).endswith("'client_email' entry not found in service account JSON")
+    assert "'client_email' entry not found in service account JSON" in str(exc_info)
 
     # broken JSON
     source = get_source_with_mocked_client(mocked_client=None, credentials='{foobar}')
@@ -126,4 +126,4 @@ def test_client_credentials_validation():
     with raises(MycroftSourceError) as exc_info:
         _ = source.client
 
-    assert str(exc_info).endswith("Failed to load Google's service account JSON file")
+    assert "Failed to load Google's service account JSON file" in str(exc_info)
