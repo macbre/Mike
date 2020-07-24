@@ -1,0 +1,46 @@
+name: Integration tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+
+  integrations_tests:
+    runs-on: ubuntu-latest
+
+    services:
+        mysql:
+            image: "mysql:8.0.20"
+            env:
+                MYSQL_ALLOW_EMPTY_PASSWORD: yes
+                MYSQL_DATABASE: mycroft_holmes
+            ports:
+                - "3306:3306"
+            options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: make
+
+    - name: Lint the code
+      run: make lint
+
+    - name: Set up the database
+      run: |
+        docker ps
+
+        cat schema.sql | mysql --protocol=tcp -u root mycroft_holmes -v
+        cat schema_test.sql | mysql --protocol=tcp -u root mycroft_holmes -v
+
+        mysql --protocol=tcp -u root mycroft_holmes -v -e '\s; SHOW TABLES; SHOW DATABASES;'
+
+    - name: Test the code
+      run: make test
