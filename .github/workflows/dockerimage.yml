@@ -1,0 +1,27 @@
+name: Check if a Docker image can be built
+
+on: [push, workflow_dispatch]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        docker build . --tag ${{ github.sha }}
+        docker images
+
+    - name: Run the image
+      run: |
+        docker run --detach ${{ github.sha }}
+
+        # wait for Mike to start
+        sleep 5
+
+        # healthchecks
+        docker ps
+        # curl -v 0:5000
