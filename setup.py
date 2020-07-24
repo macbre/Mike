@@ -29,7 +29,7 @@ setup(
         'jira==2.0.0',
         'PyAthena==1.4.4',
         'pyyaml>=4.2b1',
-        'python-dotenv==0.10.1',
+        'python-dotenv==0.14.0',
         'pyjq==2.3.1',
         'lxml>=4.2.0',
         # UI
