@@ -1,4 +1,4 @@
-FROM python:3.6-alpine3.9
+FROM python:3.8-alpine
 
 # label the image with branch name and commit hash
 LABEL maintainer="maciej.brencz@gmail.com"
@@ -15,12 +15,13 @@ COPY mycroft_holmes/__init__.py mycroft_holmes/
 COPY mycroft_holmes/bin mycroft_holmes/bin
 
 # @see https://leemendelowitz.github.io/blog/how-does-python-find-packages.html
-# Python by default reads site packages from /usr/local/lib/python3.6/site-packages
-# while apk install py3-lxml to /usr/lib/python3.6/site-packages
-ENV PYTHONPATH /usr/local/lib/python3.6/site-packages:/usr/lib/python3.6/site-packages
+# Python by default reads site packages from /usr/local/lib/python3.8/site-packages
+# while apk install py3-lxml to /usr/lib/python3.8/site-packages
+ENV PYTHONPATH /usr/local/lib/python3.8/site-packages:/usr/lib/python3.8/site-packages
 
-RUN apk add --update --no-cache mariadb-connector-c py3-lxml \
-    && apk add --no-cache --virtual .build-deps build-base automake autoconf libtool mariadb-dev libffi-dev yaml-dev \
+RUN apk add --update --no-cache mariadb-connector-c py3-cryptography py3-lxml py3-yaml \
+    && pip list \
+    && apk add --no-cache --virtual .build-deps build-base automake autoconf libtool mariadb-dev libffi-dev \
     && pip install -e . \
     && apk del .build-deps \
     && pip list
