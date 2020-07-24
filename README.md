@@ -1,9 +1,8 @@
 # Mike
 
-[![Build Status](https://travis-ci.org/Wikia/Mike.svg?branch=master)](https://travis-ci.org/Wikia/Mike)
 [![](https://images.microbadger.com/badges/image/macbre/mike.svg)](https://hub.docker.com/r/macbre/mike)
 
-![](https://github.com/Wikia/Mike/raw/master/docs/Mike_dashboard.png)
+![](https://github.com/macbre/Mike/raw/master/docs/Mike_dashboard.png)
 
 ### [Mycroft Holmes](https://en.wikipedia.org/wiki/The_Moon_Is_a_Harsh_Mistress#Characters) (High-Optional, Logical, Multi-Evaluating Supervisor) aka Mike.
 
@@ -14,7 +13,7 @@
 * access and application logs from [Elasticsearch](https://www.elastic.co/)
 * any data that can be queried from [MySQL database](https://www.mysql.com/)
 
-> See the list of [all available sources](https://github.com/Wikia/Mike/tree/master/mycroft_holmes/sources#available-sources).
+> See the list of [all available sources](https://github.com/macbre/Mike/tree/master/mycroft_holmes/sources#available-sources).
 
 ## Install
 
@@ -128,7 +127,7 @@ sources:
     password: "${DATABASE_PASSWORD}"
 ```
 
-[List of all available sources with full documentation](https://github.com/Wikia/Mike/tree/master/mycroft_holmes/sources#sources).
+[List of all available sources with full documentation](https://github.com/macbre/Mike/tree/master/mycroft_holmes/sources#sources).
 
 ### `generate_source_docs`
 
@@ -137,9 +136,9 @@ when a new source is added or an existing one is updated.
 
 ## Config file
 
-[An example YAML config file](https://github.com/Wikia/Mike/blob/master/test/fixtures/config.yaml) can be found in `test/fixtures` directory.
+[An example YAML config file](https://github.com/macbre/Mike/blob/master/test/fixtures/config.yaml) can be found in `test/fixtures` directory.
 
-[Mike's architecture, sources structure and configuration](https://github.com/Wikia/Mike/tree/master/mycroft_holmes/sources#sources) are described in `mycroft_holmes/sources` directory.
+[Mike's architecture, sources structure and configuration](https://github.com/macbre/Mike/tree/master/mycroft_holmes/sources#sources) are described in `mycroft_holmes/sources` directory.
 
 ## License
 
@@ -155,7 +154,7 @@ make test
 
 ### MySQL storage integration tests
 
-> `TEST_DATABASE` env variable needs to be set to run these tests. `schema.sql` and `schema_test.sql` files need to be applied as well. Please refer to `.travis.yml` when in doubt.
+> `TEST_DATABASE` env variable needs to be set to run these tests. `schema.sql` and `schema_test.sql` files need to be applied as well. Please refer to [`.github/workflows/tests.yml`](https://github.com/macbre/Mike/blob/master/.github/workflows/tests.yml) when in doubt.
 
 You may want to include storage integration tests. They do require running MySQL server.
 Connection details can be provided via `.env` file:
