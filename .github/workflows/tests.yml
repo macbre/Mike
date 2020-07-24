@@ -30,8 +30,8 @@ jobs:
     - name: Install dependencies
       run: make
 
-#    - name: Lint the code
-#      run: make lint
+    - name: Lint the code
+      run: make lint
 
     - name: Set up the database
       run: |
