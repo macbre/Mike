@@ -19,7 +19,7 @@ COPY mycroft_holmes/bin mycroft_holmes/bin
 # while apk install py3-lxml to /usr/lib/python3.8/site-packages
 ENV PYTHONPATH /usr/local/lib/python3.8/site-packages:/usr/lib/python3.8/site-packages
 
-RUN apk add --update --no-cache mariadb-connector-c py3-cryptography py3-lxml py3-yaml \
+RUN apk add --update --no-cache mariadb-connector-c py3-cryptography py3-lxml py3-future py3-yaml \
     && pip list \
     && apk add --no-cache --virtual .build-deps build-base automake autoconf libtool mariadb-dev libffi-dev \
     && pip install -e . \
