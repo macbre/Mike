@@ -30,7 +30,7 @@ setup(
         'PyAthena==1.11.0',
         'pyyaml>=4.2b1',
         'python-dotenv==0.14.0',
-        'pyjq==2.3.1',
+        'pyjq==2.4.0',
         'lxml>=4.2.0',
         # UI
         'flask==1.0.2',
