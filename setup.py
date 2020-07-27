@@ -33,7 +33,7 @@ setup(
         'pyjq==2.3.1',
         'lxml>=4.2.0',
         # UI
-        'flask==1.0.2',
+        'flask==1.1.2',
         'gunicorn==20.0.4',
     ],
     entry_points={
