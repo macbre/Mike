@@ -169,7 +169,7 @@ class DatabaseSourceBase(SourceBase):
     Used by "aws/athena" and "common/mysql" sources.
     """
     def __init__(self):
-        super(DatabaseSourceBase, self).__init__()
+        super().__init__()
         self._client = None
 
     def _get_client(self):
@@ -210,4 +210,4 @@ class DatabaseSourceBase(SourceBase):
             return value
 
         except Exception as ex:
-            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex))
+            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex)) from None

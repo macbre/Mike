@@ -60,7 +60,7 @@ class JiraSource(SourceBase):
         :type password str
         :type client obj
         """
-        super(JiraSource, self).__init__()
+        super().__init__()
 
         self._server = server
         self._basic_auth = (user, password)
@@ -105,7 +105,7 @@ class JiraSource(SourceBase):
         try:
             tickets = self.client.search_issues(jql_str=jql)
         except Exception as ex:
-            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex))
+            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex)) from None
 
         return len(tickets)
 

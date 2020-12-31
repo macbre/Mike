@@ -58,7 +58,7 @@ class MysqlSource(DatabaseSourceBase):
         :type password str
         :type client obj
         """
-        super(MysqlSource, self).__init__()
+        super().__init__()
 
         self._connection_params = dict(
             host=host,
