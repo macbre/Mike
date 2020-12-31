@@ -10,9 +10,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
     - name: Build the Docker image
+      env:
+        # @see https://testdriven.io/blog/faster-ci-builds-with-docker-cache/
+        CACHE_IMAGE: macbre/mike:latest
       run: |
-        docker build . --tag ${{ github.sha }}
+        docker pull $CACHE_IMAGE
+        docker build . \
+          --cache-from $CACHE_IMAGE \
+          --tag ${{ github.sha }}
         docker images
 
     - name: Run the image
