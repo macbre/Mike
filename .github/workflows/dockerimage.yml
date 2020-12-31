@@ -21,15 +21,14 @@ jobs:
           --cache-from $CACHE_IMAGE \
           --tag ${{ github.sha }}
         docker images
-        docker inspect ${{ github.sha }}
 
     - name: Run the image
       run: |
-        docker run --detach ${{ github.sha }}
+        docker run --detach --rm -p 0.0.0.0:5000:5000 --name test -t ${{ github.sha }} 
 
         # wait for Mike to start
-        sleep 5
+        sleep 5; docker ps
 
         # healthchecks
-        docker ps
-        # curl -v 0:5000
+        curl -v 0:5000/version.json
+        docker logs test
