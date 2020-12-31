@@ -22,7 +22,7 @@ setup(
     },
     install_requires=[
         'elasticsearch-query==2.4.0',
-        'google-api-python-client==1.10.0',
+        'google-api-python-client==1.12.8',
         'mysql-connector-python==8.0.22',
         'oauthlib[signedtoken]>=2.1.0, <4.0.0',
         'requests-oauthlib==1.3.0',
