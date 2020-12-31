@@ -27,7 +27,7 @@ setup(
         'oauthlib[signedtoken]>=2.1.0, <4.0.0',
         'requests-oauthlib==1.3.0',
         'jira==2.0.0',
-        'PyAthena==1.11.0',
+        'PyAthena==2.1.0',
         'pyyaml>=4.2b1',
         'python-dotenv==0.14.0',
         'pyjq==2.4.0',
