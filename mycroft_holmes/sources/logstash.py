@@ -58,7 +58,7 @@ class LogstashSource(SourceBase):
         :type period int
         :type client obj
         """
-        super(LogstashSource, self).__init__()
+        super().__init__()
 
         self._server = host
         self._index = index

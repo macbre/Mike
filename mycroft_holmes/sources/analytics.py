@@ -73,7 +73,7 @@ class GoogleAnalyticsSource(SourceBase):
         :type view_id int
         :type client obj
         """
-        super(GoogleAnalyticsSource, self).__init__()
+        super().__init__()
 
         self.credentials = credentials
         self.view_id = view_id

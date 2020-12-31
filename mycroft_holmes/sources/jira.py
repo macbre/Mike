@@ -60,7 +60,7 @@ class JiraSource(SourceBase):
         :type password str
         :type client obj
         """
-        super(JiraSource, self).__init__()
+        super().__init__()
 
         self._server = server
         self._basic_auth = (user, password)

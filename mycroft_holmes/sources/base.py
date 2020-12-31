@@ -169,7 +169,7 @@ class DatabaseSourceBase(SourceBase):
     Used by "aws/athena" and "common/mysql" sources.
     """
     def __init__(self):
-        super(DatabaseSourceBase, self).__init__()
+        super().__init__()
         self._client = None
 
     def _get_client(self):

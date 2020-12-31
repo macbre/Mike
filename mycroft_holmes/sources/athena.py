@@ -63,7 +63,7 @@ class AthenaSource(DatabaseSourceBase):
         :type region str
         :type client obj
         """
-        super(AthenaSource, self).__init__()
+        super().__init__()
 
         self._connection_params = dict(
             aws_access_key_id=access_key_id,
