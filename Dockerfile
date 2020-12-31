@@ -2,19 +2,21 @@ FROM python:3.8-alpine
 
 WORKDIR /opt/mike
 
-# install dependencies
-COPY setup.py .
-COPY mycroft_holmes/__init__.py mycroft_holmes/
-COPY mycroft_holmes/bin mycroft_holmes/bin
-
 # @see https://leemendelowitz.github.io/blog/how-does-python-find-packages.html
 # Python by default reads site packages from /usr/local/lib/python3.8/site-packages
 # while apk install py3-lxml to /usr/lib/python3.8/site-packages
 ENV PYTHONPATH /usr/local/lib/python3.8/site-packages:/usr/lib/python3.8/site-packages
 
+# install the initial set of dependencies that do not depend on setup.py (i.e. change less frequently)
 RUN apk add --update --no-cache mariadb-connector-c py3-cryptography py3-lxml py3-future py3-yaml \
-    && pip list \
-    && apk add --no-cache --virtual .build-deps build-base automake autoconf libtool mariadb-dev libffi-dev \
+    && pip list
+
+# install project dependencies
+COPY setup.py .
+COPY mycroft_holmes/__init__.py mycroft_holmes/
+COPY mycroft_holmes/bin mycroft_holmes/bin
+
+RUN apk add --no-cache --virtual .build-deps build-base automake autoconf libtool mariadb-dev libffi-dev \
     && pip install -e . \
     && apk del .build-deps \
     && pip list
