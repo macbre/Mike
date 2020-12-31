@@ -58,7 +58,7 @@ class LogstashSource(SourceBase):
         :type period int
         :type client obj
         """
-        super(LogstashSource, self).__init__()
+        super().__init__()
 
         self._server = host
         self._index = index
@@ -94,6 +94,6 @@ class LogstashSource(SourceBase):
         try:
             cnt = self.client.count(query=query)
         except Exception as ex:
-            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex))
+            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex)) from None
 
         return cnt

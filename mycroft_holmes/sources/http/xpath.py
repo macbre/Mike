@@ -93,7 +93,7 @@ class HttpXPathSource(HttpSourceBase):
             return float(text)
 
         except Exception as ex:
-            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex))
+            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex)) from None
 
     def get_more_link(self, **kwargs):
         """

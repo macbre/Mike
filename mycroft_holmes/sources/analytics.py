@@ -73,7 +73,7 @@ class GoogleAnalyticsSource(SourceBase):
         :type view_id int
         :type client obj
         """
-        super(GoogleAnalyticsSource, self).__init__()
+        super().__init__()
 
         self.credentials = credentials
         self.view_id = view_id
@@ -92,8 +92,9 @@ class GoogleAnalyticsSource(SourceBase):
 
             try:
                 service_account_info = json.loads(self.credentials)
-            except json.JSONDecodeError:
-                raise MycroftSourceError('Failed to load Google\'s service account JSON file')
+            except json.JSONDecodeError as ex:
+                raise MycroftSourceError('Failed to load Google\'s service account JSON file') \
+                    from ex
 
             # simple validation of provided JSON credentials
             assert 'client_email' in service_account_info,\
@@ -185,4 +186,4 @@ class GoogleAnalyticsSource(SourceBase):
 
         except Exception as ex:
             self.logger.error('get_value() failed', exc_info=True)
-            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex))
+            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex)) from None

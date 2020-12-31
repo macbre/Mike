@@ -45,7 +45,7 @@ class Config:
         except OSError as ex:
             # File not found
             raise MycroftHolmesConfigError('Failed to load "%s" config file: %s' %
-                                           (config_file, repr(ex)))
+                                           (config_file, repr(ex))) from None
 
         raw = yaml_variables_subst(raw, variables=env)
 
@@ -56,7 +56,8 @@ class Config:
         except MarkedYAMLError as ex:
             # YAML syntax is incorrect
             raise MycroftHolmesConfigError('Failed to parse "%s" config file: %s (%s)' %
-                                           (config_file, str(ex).strip(), str(ex.problem_mark)))
+                                           (config_file, str(ex).strip(), str(ex.problem_mark))) \
+                                           from None
 
     def get_raw(self):
         """
