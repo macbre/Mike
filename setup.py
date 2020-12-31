@@ -15,7 +15,7 @@ setup(
     packages=find_packages(),
     extras_require={
         'dev': [
-            'coverage==5.2.1',
+            'coverage==5.3.1',
             'pylint==2.4.2',
             'pytest==6.2.1',
         ]
@@ -29,7 +29,7 @@ setup(
         'jira==2.0.0',
         'PyAthena==2.1.0',
         'pyyaml>=4.2b1',
-        'python-dotenv==0.14.0',
+        'python-dotenv==0.15.0',
         'pyjq==2.4.0',
         'lxml>=4.2.0',
         # UI
