@@ -94,6 +94,6 @@ class LogstashSource(SourceBase):
         try:
             cnt = self.client.count(query=query)
         except Exception as ex:
-            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex))
+            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex)) from None
 
         return cnt

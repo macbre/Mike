@@ -82,7 +82,7 @@ class HttpJsonSource(HttpSourceBase):
             except ValueError as ex:
                 # jq: error: test/0 is not defined at <top-level>, line 1:
                 self.logger.error(str(ex))
-                raise MycroftSourceError(str(ex))
+                raise MycroftSourceError(str(ex)) from None
 
             if match is None:
                 raise MycroftSourceError('jq pattern returned no matches')
@@ -97,7 +97,7 @@ class HttpJsonSource(HttpSourceBase):
             return float(match)
 
         except Exception as ex:
-            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex))
+            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex)) from None
 
     def get_more_link(self, **kwargs):
         """

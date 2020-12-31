@@ -105,7 +105,7 @@ class JiraSource(SourceBase):
         try:
             tickets = self.client.search_issues(jql_str=jql)
         except Exception as ex:
-            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex))
+            raise MycroftSourceError('Failed to get metric value: %s' % repr(ex)) from None
 
         return len(tickets)
 
