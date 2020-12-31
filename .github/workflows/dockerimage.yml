@@ -25,12 +25,12 @@ jobs:
 
     - name: Run the image
       run: |
-        docker run --detach ${{ github.sha }}
+        docker run --detach ${{ github.sha }} --rm -p 0.0.0.0:5000:5000 -t macbre/test
 
         # wait for Mike to start
         sleep 5
+        docker ps
 
         # healthchecks
-        docker ps
         curl -v 0:5000/version.json
-        docker logs ${{ github.sha }}
+        docker logs macbre/test
