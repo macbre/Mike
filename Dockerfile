@@ -1,12 +1,5 @@
 FROM python:3.8-alpine
 
-# label the image with branch name and commit hash
-LABEL maintainer="maciej.brencz@gmail.com"
-ARG BRANCH="master"
-ARG COMMIT=""
-LABEL branch=${BRANCH}
-LABEL commit=${COMMIT}
-
 WORKDIR /opt/mike
 
 # install dependencies
@@ -31,6 +24,13 @@ COPY . .
 
 # expose the HTTP port
 EXPOSE 5000
+
+# label the image with branch name and commit hash
+LABEL maintainer="maciej.brencz@gmail.com"
+ARG BRANCH="master"
+ARG COMMIT=""
+LABEL branch=${BRANCH}
+LABEL commit=${COMMIT}
 
 # your custom config YAML should be mounted
 # and MIKE_CONFIG env variable should point to it

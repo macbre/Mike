@@ -21,6 +21,7 @@ jobs:
           --cache-from $CACHE_IMAGE \
           --tag ${{ github.sha }}
         docker images
+        docker inspect ${{ github.sha }}
 
     - name: Run the image
       run: |
