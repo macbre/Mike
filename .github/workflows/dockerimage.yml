@@ -25,11 +25,10 @@ jobs:
 
     - name: Run the image
       run: |
-        docker run --detach --rm -t ${{ github.sha }} -p 0.0.0.0:5000:5000 --name test
+        docker run --detach --rm -p 0.0.0.0:5000:5000 --name test -t ${{ github.sha }} 
 
         # wait for Mike to start
-        sleep 5
-        docker ps
+        sleep 5; docker ps
 
         # healthchecks
         curl -v 0:5000/version.json
